@@ -1,2 +1,1 @@
-# fastapi-tasks
----
+[![Daily Commit Workflow](https://github.com/harinie-4466/fastapi-tasks/actions/workflows/daily-commit.yml/badge.svg)](https://github.com/harinie-4466/fastapi-tasks/actions/workflows/daily-commit.yml)
