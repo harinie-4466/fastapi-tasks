@@ -2,27 +2,25 @@ name: Daily Commit Workflow
 
 on:
   schedule:
-    # Runs once per day at 10:30 UTC
-    - cron: '30 10 * * *'
+    - cron: "15 10 * * *"   # Runs daily at 10:15 UTC
   workflow_dispatch:
 
 jobs:
-  commit-job:
+  build:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: 24f1002782@ds.study.iitm.ac.in
+        run: echo "Workflow running"
 
-    - name: Setup Git
-      run: |
-        git config user.name "github-actions"
-        git config user.email "24f1002782@ds.study.iitm.ac.in"
-
-    - name: 24f1002782@ds.study.iitm.ac.in Daily Commit Step
-      run: |
-        echo "Daily update $(date)" >> daily_log.txt
-        git add daily_log.txt
-        git commit -m "Daily automated commit"
-        git push
+      - name: Create commit
+        run: |
+          echo "Daily commit $(date)" >> log.txt
+          git config --global user.name "github-actions"
+          git config --global user.email "24f1002782@ds.study.iitm.ac.in"
+          git add log.txt
+          git commit -m "Daily automated commit" || echo "No changes"
+          git push
